@@ -25,8 +25,18 @@ const Sidebar = () => {
           </Link>
         </li>
         <li>
-          <Link to="/signup">
-            <List /> {isOpen && "Sign Up"}
+          <Link to="/appointment">
+            <List /> {isOpen && "Appointment form"}
+          </Link>
+        </li>
+        <li>
+          <Link to="/shop">
+            <List /> {isOpen && "Shop"}
+          </Link>
+        </li>
+        <li>
+          <Link to="/chatbot">
+            <List /> {isOpen && "PharmaBot"}
           </Link>
         </li>
         <li>

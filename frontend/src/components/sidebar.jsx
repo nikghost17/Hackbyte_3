@@ -15,6 +15,11 @@ const Sidebar = () => {
       </button>
       <ul className="menu-list">
         <li>
+          <Link to="/profilepage">
+            <List /> {isOpen && "Profile Page"}
+          </Link>
+        </li>
+        <li>
           <Link to="/timetable">
             <List /> {isOpen && "Timetable"}
           </Link>

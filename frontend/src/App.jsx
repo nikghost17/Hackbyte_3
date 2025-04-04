@@ -19,7 +19,6 @@ function App() {
       <Route path="/" element={<Home />} />
       <Route path="/home" element={<Home />} />
       <Route path="/timetable" element={<Timetable />} />
-      <Route path="/feedbackform" element={<FeedbackForm />} />
       <Route path="/appointment" element={<AppointmentForm />} />
       <Route path="/profilepage" element={<ProfilePage />} />
       <Route path="/uploadprescription" element={<UploadPrescription />} />

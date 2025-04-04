@@ -1,50 +1,63 @@
-/* Updated CSS for better contrast and readability */
-
-/* CTA Section Styling */
-.cta-section {
-  background: rgba(
-    255,
-    255,
-    255,
-    0.9
-  ); /* Slightly increase opacity for better readability */
-  color: #333; /* Darken text for contrast */
+/* Features Section Styling */
+.features {
+  padding: 50px 0;
   text-align: center;
-  padding: 40px;
-  border-radius: 12px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-.cta-section h2 {
-  font-size: 28px;
-  font-weight: bold;
-  color: #222; /* Darker color for better visibility */
+.features-container {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  max-width: 1100px;
+  margin: 0 auto;
 }
 
-.cta-section p {
-  font-size: 16px;
-  color: #444; /* Medium-dark text for readability */
+.feature-card {
+  background: white;
+  padding: 25px;
+  width: 320px;
+  text-align: center;
+  border-radius: 16px;
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-.cta-button {
-  background: #0056ff; /* Ensure button stands out */
+.feature-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.feature-icon {
+  width: 70px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #007bff;
+  border-radius: 50%;
+  margin-bottom: 15px;
+}
+
+.feature-icon i {
+  font-size: 32px;
   color: white;
-  padding: 12px 24px;
-  border-radius: 24px;
-  font-weight: bold;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Footer Styling */
-.footer {
-  background: #111; /* Dark background for contrast */
-  color: rgba(255, 255, 255, 0.85); /*Adjusted text opacity */
-  text-align: center;
-  padding: 20px;
+.feature-card h3 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 10px;
 }
 
-.footer p {
-  font-size: 14px;
-  color: rgba(255, 255, 255, 0.9); /* Lighter color for readability */
-  font-style: normal; /* Remove italics for clarity */
+.feature-card p {
+  font-size: 16px;
+  color: #555;
+  line-height: 1.5;
 }

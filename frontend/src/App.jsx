@@ -8,14 +8,14 @@ import ProfilePage from "./pages/profilepage.jsx";
 import UploadPrescription from "./pages/uploadprescription.jsx";
 import EditProfile from "./pages/editprofile.jsx";
 import ShowPrescriptions from "./pages/showprescriptions.jsx";
-// import SignIn from "./pages/signin.jsx";
-// import SignUp from "./pages/login.jsx";
+import SignIn from "./pages/login.jsx"; 
+import SignUp from "./pages/signup.jsx";
 
 function App() {
   return (
     <Routes>
-      {/* <Route path="/signup" element={<SignUp />} /> */}
-      {/* <Route path="/login" element={<SignIn />} /> */}
+      { <Route path="/signup" element={<SignUp />} /> }
+      { <Route path="/login" element={<SignIn />} /> }
       {/* <Route path="/signin" element={<SignIn />} /> */}
       <Route path="/" element={<Home />} />
       <Route path="/" element={<ProfilePage />} />

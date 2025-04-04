@@ -1,0 +1,35 @@
+.sidebar {
+  width: 250px;
+  background: #0a0a0a;
+  color: white;
+  height: 100vh;
+  padding: 20px;
+  transition: width 0.3s;
+}
+
+.sidebar.collapsed {
+  width: 60px;
+}
+
+.toggle-btn {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.menu-list {
+  list-style: none;
+  padding: 0;
+}
+
+.menu-item {
+  cursor: pointer;
+  padding: 10px 0;
+}
+
+.submenu {
+  padding-left: 20px;
+  list-style: none;
+}

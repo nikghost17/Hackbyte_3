@@ -19,7 +19,7 @@ const TryAushadhiAI = () => {
   return (
     <section id="app-section" className="app-section">
       <div className="container">
-        <h2 className="section-title">Try AushadhiAI</h2>
+        <h2 className="section-title">Try PharmaHub</h2>
         <div className="app-container">
           <div className="upload-container">
             <h3>Upload Your Prescription</h3>

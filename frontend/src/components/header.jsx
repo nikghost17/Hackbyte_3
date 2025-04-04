@@ -12,13 +12,13 @@ const Header = () => {
       <div className="container">
         <div className="header-content">
           <h1 className="logo">
-            <span className="devanagari">औषधि</span>AI
+            <span className="devanagari">PharmaHub</span>
           </h1>
           <h2 className="tagline">
-            Decoding Prescriptions. Empowering Patients.
+          Prescription Clarity, Patient Power!
           </h2>
           <button className="cta-button" onClick={scrollToAppSection}>
-            Try AushadhiAI Now
+            Try PharmaHub Now
           </button>
         </div>
         <div className="hero-image">

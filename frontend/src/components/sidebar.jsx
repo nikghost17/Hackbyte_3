@@ -34,6 +34,11 @@ const Sidebar = () => {
             <List /> {isOpen && "Login"}
           </Link>
         </li>
+        <li>
+          <Link to="/profilepage">
+            <List /> {isOpen && "Profile"}
+          </Link>
+        </li>
       </ul>
     </div>
   );

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../components/AppointmentForm.css";
+import "./AppointmentForm.css";
 
 const AppointmentForm = () => {
   const [formData, setFormData] = useState({

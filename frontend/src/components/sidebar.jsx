@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { List, ChevronDown, ChevronRight } from "lucide-react";
+import { List } from "lucide-react";
 import "./sidebar.css";
 
 const Sidebar = () => {
@@ -32,11 +32,6 @@ const Sidebar = () => {
         <li>
           <Link to="/login">
             <List /> {isOpen && "Login"}
-          </Link>
-        </li>
-        <li>
-          <Link to="/profilepage">
-            <List /> {isOpen && "Profile"}
           </Link>
         </li>
       </ul>

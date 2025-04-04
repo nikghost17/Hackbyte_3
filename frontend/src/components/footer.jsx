@@ -5,7 +5,7 @@ const Footer = () => {
     <footer className="footer">
       <div className="container">
         <p className="footer-text">
-          "Bringing the ancient wisdom of Aushadhi (medicine) together with
+          "Bringing the ancient wisdom of PharmaHub together with
           modern artificial intelligence"
         </p>
       </div>

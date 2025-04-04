@@ -8,8 +8,11 @@ import ProfilePage from "./pages/profilepage.jsx";
 import UploadPrescription from "./pages/uploadprescription.jsx";
 import EditProfile from "./pages/editprofile.jsx";
 import ShowPrescriptions from "./pages/showprescriptions.jsx";
-import SignIn from "./pages/login.jsx";
+import SignIn from "./pages/Login.jsx";
 import SignUp from "./pages/signup.jsx";
+import StripeCheckout from "./components/StripeCheckout.jsx";
+// import SignIn from "./pages/signin.jsx";
+// import SignUp from "./pages/login.jsx";
 
 function App() {
   return (
@@ -24,6 +27,8 @@ function App() {
       <Route path="/uploadprescription" element={<UploadPrescription />} />
       <Route path="/editprofile" element={<EditProfile />} />
       <Route path="/showprescriptions" element={<ShowPrescriptions />} />
+      <Route path="/st" element={<StripeCheckout />} />
+      
     </Routes>
   );
 }

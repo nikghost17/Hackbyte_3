@@ -7,6 +7,7 @@ const { generateToken } = require('./config/jwt.js');
 const { jwtMiddleware } = require('./middleware/jwtMiddleware.js');
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
+const paymentRoutes = require("./routes/stripe.js");
 const PORT = process.env.PORT || 5000;
 // Import database connection
 const connectDB = require('./config/db.js');
@@ -22,7 +23,7 @@ app.use(express.urlencoded({ extended: true }));
 connectDB();
 
 app.use('/auth', authRoutes);
-
+app.use("/api/stripe", paymentRoutes);
 
 // start server
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

@@ -1,5 +1,5 @@
 import Header from "../components/header";
-import Navigation from "../components/navigation";
+import Sidebar from "../components/Sidebar";
 import Features from "../components/features";
 import HowItWorks from "../components/howitworks";
 import TryAushadhiAI from "../components/tryaushidhiai";
@@ -11,7 +11,7 @@ const Home = () => {
   return (
     <div>
       <Header />
-      <Navigation />
+      <Sidebar />
       <Features />
       <HowItWorks />
       <TryAushadhiAI />

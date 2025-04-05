@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import MedicineCard from "../components/medicinecard";
 import { useNavigate } from "react-router-dom";
+import Sidebar from "../components/sidebar"; // ✅ Sidebar import
+import "./shop.css";
 
 const Shop = () => {
   const [medicines, setMedicines] = useState([]);
@@ -12,7 +13,6 @@ const Shop = () => {
     fetch("http://localhost:5000/api/medicines")
       .then((res) => res.json())
       .then((data) => {
-        console.log("Fetched medicines:", data); // 👈 Add this
         setMedicines(data);
         setFiltered(data);
       });
@@ -30,33 +30,53 @@ const Shop = () => {
   };
 
   return (
-    <div className="p-6 bg-gray-100 min-h-screen">
-      <div className="flex justify-between items-center mb-6">
-        <input
-          type="text"
-          placeholder="Search for a medicine..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          className="p-2 border rounded w-1/2"
-        />
-        <button
-          onClick={handleSearch}
-          className="bg-blue-500 text-white px-4 py-2 rounded ml-2"
-        >
-          Search
-        </button>
-        <button
-          onClick={() => navigate("/cart")}
-          className="ml-auto bg-green-500 text-white px-4 py-2 rounded"
-        >
-          🛒 Cart
-        </button>
-      </div>
+    <div className="shop-layout">
+      <Sidebar />
+      <div className="shop-container">
+        <div className="shop-header">
+          <input
+            type="text"
+            placeholder="Search for a medicine..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+          <button onClick={handleSearch} className="search-btn">
+            🔍 Search
+          </button>
+          <button onClick={() => navigate("/cart")} className="cart-btn">
+            🛒 Cart
+          </button>
+        </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-        {filtered.map((med, index) => (
-          <MedicineCard key={index} medicine={med} />
-        ))}
+        <div className="medicine-grid">
+          {filtered.map((med, index) => (
+            <div className="medicine-card" key={index}>
+              <div>
+                <div className="medicine-title">{med.med_name}</div>
+                <div className="medicine-info">
+                  Side effects: {med.side_effects}
+                </div>
+                <div className="medicine-info">
+                  Available:{" "}
+                  {med.med_quantity > 0 ? med.med_quantity : "Sold Out"}
+                </div>
+              </div>
+              <div className="medicine-footer">
+                <span className="price">₹{med.med_price}</span>
+                {med.med_quantity > 0 ? (
+                  <button className="add-btn">Add to Cart</button>
+                ) : (
+                  <button
+                    className="add-btn"
+                    onClick={() => navigate("/requestmedicine")}
+                  >
+                    Request It
+                  </button>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

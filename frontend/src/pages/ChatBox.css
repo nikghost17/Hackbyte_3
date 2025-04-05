@@ -1,8 +1,8 @@
-.chat-container {
-    max-width: 600px;
+.chat-cont {
+    max-width: 1000px;
     margin: 40px auto;
     font-family: Arial, sans-serif;
-    border: 1px solid #ccc;
+    border: none;
     border-radius: 8px;
     overflow: hidden;
     display: flex;
@@ -10,7 +10,7 @@
     height: 80vh;
 }
 
-.chat-box {
+.chattingbox {
     flex: 1;
     padding: 10px;
     overflow-y: auto;
@@ -33,32 +33,40 @@
 
 .message.bot {
     align-self: flex-start;
-    background-color: #eee;
+    background-color: transparent; /* remove the gray */
+    padding: 5px 10px;
+    border-radius: 10px;
+    max-width: 80%;
+    font-size: 16px;
+    color: #333;
+    line-height: 1.6;
 }
 
-.input-box {
+
+
+.inputbox {
     display: flex;
     border-top: 1px solid #ddd;
 }
 
-.input-box input {
+.inputbox input {
     flex: 1;
     padding: 10px;
     border: none;
     font-size: 16px;
 }
 
-.input-box button {
+.inputbox button {
     padding: 10px 15px;
     border: none;
     background-color: #4caf50;
     color: white;
     cursor: pointer;
 }
-.upload-box {
+.uploadingbox {
     margin-top: 10px;
     display: flex;
     gap: 10px;
     align-items: center;
     justify-content: center;
-}  
+}   

@@ -77,13 +77,10 @@ def get_medicine_info(medicine_name: str) -> str:
 
 def validate_and_extract_medicines(text: str) -> dict:
     prompt = (
-        "You are a helpful medical assistant. "
-        "I will give you OCR text extracted from a prescription. "
-        "From this text, check if it contains valid medicine names. "
-        "If yes, return the names in a plain text bulleted list using dashes (-) and sentence case. "
-        "Make sure each medicine name is on a separate line — do not combine them on the same line. "
-        "Do not use asterisks, markdown, or HTML. Only return plain text output.\n\n"
-        f"Extracted prescription text:\n{text}"
+        "Extract medicine names from the following prescription text.\n"
+        "Return them in Markdown format as a bulleted list using dashes (-). "
+        "Each medicine name should be on a new line, using sentence case.\n\n"
+        f"Prescription Text:\n{text}"
     )
 
     response = client.models.generate_content(
@@ -98,9 +95,14 @@ class Message(BaseModel):
 @app.post("/chat")
 async def chat(message: Message):
     user_text = message.user_input
+    prompt = (
+        "Be the friendliest chat bot and respond to the customers query but keep in mind to give a concise answer. \n"
+        "Give a short summary answer."
+        f"Prescription Text:\n{user_text}"
+    )
     response = client.models.generate_content(
         model="gemini-2.0-flash",
-        contents=user_text
+        contents=prompt
     )
     reply_text = response.text 
     return {"reply": reply_text}
@@ -117,17 +119,18 @@ async def extract_text(file: UploadFile = File(...)):
 @app.post("/validate_prescription/")
 async def validate_prescription(data: dict):
     text = data.get("text", "")
-    
-    # Step 1: Extract valid medicine names
     response_text = validate_and_extract_medicines(text)
-    # Parse medicine names from plain text (each line starting with "-")
-    medicine_names = [line.lstrip("- ").strip() for line in response_text.split("\n") if line.startswith("-")]
 
-    # Step 2: Fetch info for each medicine
+    # Clean Markdown bullet list (starting with `-`)
+    medicine_names = [
+        line.lstrip("- ").strip()
+        for line in response_text.split("\n")
+        if line.strip().startswith("-")
+    ]
+
     info = {med: get_medicine_info(med) for med in medicine_names}
-
     return {
-        "validated": response_text,
+        "validated": response_text,  # this will be in Markdown
         "details": info
     }
 

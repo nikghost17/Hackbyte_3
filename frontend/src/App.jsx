@@ -9,6 +9,7 @@ import EditProfile from "./pages/editprofile.jsx";
 import ShowPrescriptions from "./pages/showprescriptions.jsx";
 import SignIn from "./pages/Login.jsx";
 import SignUp from "./pages/signup.jsx";
+import Chatbox from "./pages/ChatBox.jsx";
 import AboutUs from "./pages/About_Us.jsx"
 import AdminInventory from "./pages/AdminInventory.jsx"
 
@@ -25,9 +26,9 @@ function App() {
       <Route path="/uploadprescription" element={<UploadPrescription />} />
       <Route path="/editprofile" element={<EditProfile />} />
       <Route path="/showprescriptions" element={<ShowPrescriptions />} />
+      <Route path="/chatbot" element={<Chatbox />} />
       <Route path="/aboutus" element={<AboutUs />} />
       <Route path="/admin_inventory" element={<AdminInventory />} />
-
     </Routes>
   );
 }

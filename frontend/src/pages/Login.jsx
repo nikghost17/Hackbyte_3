@@ -21,6 +21,7 @@ const Login = () => {
 
       const { token } = response.data;
       localStorage.setItem("token", token);
+      localStorage.setItem("userId", response.data.userId); // Store userId if needed
 
       alert("Login Successful!");
     } catch (err) {

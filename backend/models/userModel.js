@@ -19,6 +19,18 @@ const userSchema = new mongoose.Schema({
   lastName: {
     type: String,
   },
+  phone: {
+    type: String,
+    required: true,
+    unique: true
+  },
+  isAdmin: {
+    type: Boolean,
+    default: false
+  },
+  gender: {
+    type: String,
+  },
   createdAt: {
     type: Date,
     default: Date.now

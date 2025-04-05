@@ -4,18 +4,18 @@ const HowItWorks = () => {
   const steps = [
     {
       icon: "fa-upload",
-      title: "Upload Your Prescription",
-      text: "Take a photo or upload an image of your prescription.",
+      title: "See the timetable, book an appointment.",
+      text: "Timetable of the doctor and option to prebook your appointment.",
     },
     {
       icon: "fa-brain",
-      title: "AI Analysis",
-      text: "Our AI processes and decodes the handwriting using neural networks.",
+      title: "Upload the prescription, get the info!",
+      text: "Get information about the medicines on your prescription. Patient Power.",
     },
     {
       icon: "fa-check-circle",
-      title: "Receive Clear Information",
-      text: "Get detailed, easy-to-understand medication information.",
+      title: "Auto book the medicines.",
+      text: "Medicines will get auto booked vis your prescription.",
     },
   ];
 

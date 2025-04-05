@@ -24,11 +24,7 @@ const Sidebar = () => {
             <List /> {isOpen && "Timetable"}
           </Link>
         </li>
-        <li>
-          <Link to="/feedbackform">
-            <List /> {isOpen && "Feedback"}
-          </Link>
-        </li>
+
         <li>
           <Link to="/appointment">
             <List /> {isOpen && "Appointment form"}

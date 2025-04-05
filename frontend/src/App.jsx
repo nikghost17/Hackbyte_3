@@ -2,7 +2,6 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/home.jsx";
 import Timetable from "./pages/timetable.jsx";
-import FeedbackForm from "./pages/feedbackform.jsx";
 import AppointmentForm from "./pages/AppointmentForm.jsx"; // Correct import
 import ProfilePage from "./pages/profilepage.jsx";
 import UploadPrescription from "./pages/uploadprescription.jsx";

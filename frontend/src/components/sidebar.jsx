@@ -15,15 +15,16 @@ const Sidebar = () => {
       </button>
       <ul className="menu-list">
         <li>
+          <Link to="/profilepage">
+            <List /> {isOpen && "Profile Page"}
+          </Link>
+        </li>
+        <li>
           <Link to="/timetable">
             <List /> {isOpen && "Timetable"}
           </Link>
         </li>
-        <li>
-          <Link to="/feedbackform">
-            <List /> {isOpen && "Feedback"}
-          </Link>
-        </li>
+
         <li>
           <Link to="/appointment">
             <List /> {isOpen && "Appointment form"}
@@ -37,6 +38,11 @@ const Sidebar = () => {
         <li>
           <Link to="/chatbot">
             <List /> {isOpen && "PharmaBot"}
+          </Link>
+        </li>
+        <li>
+          <Link to="/aboutus">
+            <List /> {isOpen && "About Us"}
           </Link>
         </li>
         <li>

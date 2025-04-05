@@ -1,14 +1,17 @@
+
 import React, { useState } from "react";
 import "./ChatBox.css";
 import ReactMarkdown from "react-markdown";
 
 const ChatBox = () => {
   const [input, setInput] = useState("");
+
   const [messages, setMessages] = useState([]);
   const [image, setImage] = useState(null);
 
   const sendMessage = async () => {
     if (!input.trim()) return;
+
 
     const userMessage = { sender: "user", text: input };
     setMessages((prev) => [...prev, userMessage]);
@@ -17,6 +20,7 @@ const ChatBox = () => {
       const res = await fetch("http://localhost:8000/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
+
         body: JSON.stringify({ user_input: input }),
       });
 
@@ -28,18 +32,21 @@ const ChatBox = () => {
     }
 
     setInput("");
+
   };
 
   const sendImage = async () => {
     if (!image) return;
 
     const formData = new FormData();
+
     formData.append("file", image);
 
     try {
       // Step 1: Extract text from image
       const res1 = await fetch("http://localhost:8000/extract_text/", {
         method: "POST",
+
         body: formData,
       });
 
@@ -55,10 +62,12 @@ const ChatBox = () => {
       const res2 = await fetch("http://localhost:8000/validate_prescription/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
+
         body: JSON.stringify({ text: extracted_text }),
       });
 
       const { validated, details } = await res2.json();
+
 
       // Show validated medicine list
       const validatedMessage = { sender: "bot", text: validated };
@@ -73,6 +82,7 @@ const ChatBox = () => {
         setMessages((prev) => [...prev, infoMessage]);
       }
 
+
       // Optionally: Detect medicine names from `result` and call /medicine_info/
     } catch (err) {
       console.error("Image upload error:", err);
@@ -82,6 +92,7 @@ const ChatBox = () => {
   };
 
   return (
+
     <div className="chat-cont">
       <h1>PharmaHub Assistant</h1>
       <div className="chattingbox">
@@ -110,6 +121,7 @@ const ChatBox = () => {
         <button onClick={sendImage} disabled={!image}>
           Upload Prescription
         </button>
+
       </div>
     </div>
   );

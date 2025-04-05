@@ -41,6 +41,11 @@ const Sidebar = () => {
           </Link>
         </li>
         <li>
+          <Link to="/admin_inventory">
+            <List /> {isOpen && "Admin_Inventory"}
+          </Link>
+        </li>
+        <li>
           <Link to="/aboutus">
             <List /> {isOpen && "About Us"}
           </Link>

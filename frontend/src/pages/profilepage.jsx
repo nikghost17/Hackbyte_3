@@ -61,7 +61,7 @@ const ProfilePage = () => {
           </p>
         </div>
 
-        <div className="profile-info">
+        {/* <div className="profile-info">
           <p>
             <strong>Phone Number:</strong> +91 9876543210
           </p>
@@ -71,7 +71,7 @@ const ProfilePage = () => {
           <p>
             <strong>Gender:</strong> Female
           </p>
-        </div>
+        </div> */}
 
         <div className="profile-buttons">
           <button

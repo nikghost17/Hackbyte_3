@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Sidebar from "../components/Sidebar";
 import "./EditProfile.css";
 
 const EditProfile = () => {
@@ -24,48 +25,56 @@ const EditProfile = () => {
   };
 
   return (
-    <div className="edit-profile-container">
-      <div className="edit-profile-card">
-        <h2>Edit Profile</h2>
-        <form onSubmit={handleSubmit} className="edit-form">
-          <label>Username</label>
-          <input
-            type="text"
-            name="username"
-            value={formData.username}
-            onChange={handleChange}
-          />
+    <div className="edit-profile-page">
+      <Sidebar />
 
-          <label>Name</label>
-          <input
-            type="text"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-          />
+      <div className="edit-profile-container">
+        <div className="edit-profile-card">
+          <h2>Edit Profile</h2>
+          <form onSubmit={handleSubmit} className="edit-form">
+            <label>Username</label>
+            <input
+              type="text"
+              name="username"
+              value={formData.username}
+              onChange={handleChange}
+            />
 
-          <label>Phone Number</label>
-          <input
-            type="text"
-            name="phone"
-            value={formData.phone}
-            onChange={handleChange}
-          />
+            <label>Name</label>
+            <input
+              type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+            />
 
-          <label>Email</label>
-          <input type="email" name="email" value={formData.email} disabled />
+            <label>Phone Number</label>
+            <input
+              type="text"
+              name="phone"
+              value={formData.phone}
+              onChange={handleChange}
+            />
 
-          <label>Gender</label>
-          <select name="gender" value={formData.gender} onChange={handleChange}>
-            <option value="Female">Female</option>
-            <option value="Male">Male</option>
-            <option value="Other">Other</option>
-          </select>
+            <label>Email</label>
+            <input type="email" name="email" value={formData.email} disabled />
 
-          <button type="submit" className="save-btn">
-            Save Changes
-          </button>
-        </form>
+            <label>Gender</label>
+            <select
+              name="gender"
+              value={formData.gender}
+              onChange={handleChange}
+            >
+              <option value="Female">Female</option>
+              <option value="Male">Male</option>
+              <option value="Other">Other</option>
+            </select>
+
+            <button type="submit" className="save-btn">
+              Save Changes
+            </button>
+          </form>
+        </div>
       </div>
     </div>
   );

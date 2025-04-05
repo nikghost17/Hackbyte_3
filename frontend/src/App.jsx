@@ -10,9 +10,7 @@ import EditProfile from "./pages/editprofile.jsx";
 import ShowPrescriptions from "./pages/showprescriptions.jsx";
 import SignIn from "./pages/Login.jsx";
 import SignUp from "./pages/signup.jsx";
-import StripeCheckout from "./components/StripeCheckout.jsx";
-// import SignIn from "./pages/signin.jsx";
-// import SignUp from "./pages/login.jsx";
+import AboutUs from "./pages/About_Us.jsx"
 
 function App() {
   return (
@@ -27,8 +25,8 @@ function App() {
       <Route path="/uploadprescription" element={<UploadPrescription />} />
       <Route path="/editprofile" element={<EditProfile />} />
       <Route path="/showprescriptions" element={<ShowPrescriptions />} />
-      <Route path="/st" element={<StripeCheckout />} />
-      
+      <Route path="/aboutus" element={<AboutUs />} />
+
     </Routes>
   );
 }

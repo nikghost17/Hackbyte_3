@@ -40,6 +40,11 @@ const Sidebar = () => {
           </Link>
         </li>
         <li>
+          <Link to="/aboutus">
+            <List /> {isOpen && "About Us"}
+          </Link>
+        </li>
+        <li>
           <Link to="/login">
             <List /> {isOpen && "Login"}
           </Link>

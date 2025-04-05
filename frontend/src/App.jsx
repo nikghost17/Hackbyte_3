@@ -10,6 +10,7 @@ import EditProfile from "./pages/editprofile.jsx";
 import ShowPrescriptions from "./pages/showprescriptions.jsx";
 import SignIn from "./pages/login.jsx";
 import SignUp from "./pages/signup.jsx";
+import AboutUs from "./pages/About_Us.jsx"
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
       <Route path="/uploadprescription" element={<UploadPrescription />} />
       <Route path="/editprofile" element={<EditProfile />} />
       <Route path="/showprescriptions" element={<ShowPrescriptions />} />
+      <Route path="/aboutus" element={<AboutUs />} />
     </Routes>
   );
 }

@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import './ChatBox.css';
+import ReactMarkdown from 'react-markdown';
+
 
 const ChatBox = () => {
     const [input, setInput] = useState('');
@@ -64,7 +66,7 @@ const ChatBox = () => {
         for (const [name, description] of Object.entries(details)) {
             const infoMessage = {
                 sender: 'system',
-                text: `💊 *${name}*\n${description}`
+                text: `💊${description}`
             };
             setMessages((prev) => [...prev, infoMessage]);
         }
@@ -79,16 +81,16 @@ const ChatBox = () => {
     };
 
     return (
-        <div className="chat-container">
-        <div className="chat-box">
+        <div className="chat-cont">
+        <div className="chattingbox">
             {messages.map((msg, index) => (
-            <div key={index} className={`message ${msg.sender}`}>
-                {msg.text}
-            </div>
+            <div className={`message ${msg.sender === 'user' ? 'user' : 'bot'}`}>
+            <ReactMarkdown>{msg.text}</ReactMarkdown>
+        </div>
             ))}
         </div>
 
-        <div className="input-box">
+        <div className="inputbox">
             <input
             type="text"
             value={input}
@@ -99,7 +101,7 @@ const ChatBox = () => {
             <button onClick={sendMessage}>Send</button>
         </div>
 
-        <div className="upload-box">
+        <div className="uploadingbox">
             <input
             type="file"
             accept="image/*"
@@ -112,4 +114,3 @@ const ChatBox = () => {
 };
 
 export default ChatBox;
-

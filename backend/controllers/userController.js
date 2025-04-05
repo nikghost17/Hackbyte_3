@@ -4,36 +4,30 @@ const jwt = require('jsonwebtoken');
 const config = require('../config/env');
 
 
-// Register a new user
-exports.register = async (req, res) => {
-  const { email, password, firstName, lastName } = req.body;
-
+const getAllUsers = async (req, res) => {
   try {
-    // Check if user already exists
-    const existingUser = await userModel.findOne({ email });
-    if (existingUser) {
-      return res.status(400).json({ message: 'User already exists' });
-    }
-
-    // Hash the password
-    const hashedPassword = await bcrypt.hash(password, 10);
-
-    // Create a new user
-    const newUser = new userModel({
-      email,
-      password: hashedPassword,
-      firstName,
-      lastName
-    });
-
-    await newUser.save();
-
-    // Generate a JWT token
-
-    console.log('User registered:', newUser);
-    res.status(201).json({ message: 'User registered successfully' });
+    const users = await userModel.find({});
+    res.status(200).json(users);
   } catch (error) {
-    console.error('Error registering user:', error);
-    res.status(500).json({ message: 'Server error' });
+    res.status(500).json({ message: error.message });
   }
+}
+
+const getUserById = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const user = await userModel.findById(id);
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+    res.status(200).json(user);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+}
+
+module.exports = {
+  getAllUsers,
+  getUserById,
+  // Add other controller functions here as needed
 };

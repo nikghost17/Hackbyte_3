@@ -11,7 +11,7 @@ dotenv.config();
 
 // Register a new user
 const register = async (req, res) => {
-  const { email, password, firstName, lastName } = req.body;
+  const { email, password, firstName, lastName, phone } = req.body;
 
   try {
     // Check if email is valid using DNS lookup
@@ -34,6 +34,7 @@ const register = async (req, res) => {
       password: hashedPassword,
       firstName,
       lastName,
+      phone,
     });
 
     await newUser.save();
@@ -67,7 +68,11 @@ const login = async (req, res) => {
     // Generate a JWT token
     const token = generateToken(user);
 
-    res.status(200).json({ message: "Login successful", token });
+    res.status(200).json({
+      message: "Login successful",
+      token,
+      userId: user._id, // ✅ this will be available on frontend
+    });
   } catch (error) {
     console.error("Error logging in:", error);
     res.status(500).json({ message: "Server error" });

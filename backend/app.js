@@ -12,6 +12,7 @@ const PORT = process.env.PORT || 5000;
 // Import database connection
 const connectDB = require('./config/db.js');
 const authRoutes = require('./routes/authRoutes.js'); 
+const userRoutes = require('./routes/userRoutes.js');
 const app = express();
 
 // Middleware
@@ -24,6 +25,7 @@ connectDB();
 
 app.use('/auth', authRoutes);
 app.use("/api/stripe", paymentRoutes);
+app.use('/users', userRoutes);
 
 // start server
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { FaUserEdit, FaUpload, FaEye } from "react-icons/fa";
-import Sidebar from "../components/Sidebar";
+import { FaUserEdit, FaUpload, FaEye, FaCamera } from "react-icons/fa";
+import Sidebar from "../components/sidebar";
 import axios from "axios";
 import "./profilepage.css";
 //import imagePlaceholder from "../assets/image.png";
@@ -33,13 +33,54 @@ const ProfilePage = () => {
     fetchUser();
   }, [userId, token]);
 
+  const handleImageUpload = async () => {
+    const widget = window.cloudinary.createUploadWidget(
+      {
+        cloudName: import.meta.env.VITE_CLOUDINARY_CLOUD_NAME,
+        uploadPreset: import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET,
+      },
+      async (error, result) => {
+        if (!error && result && result.event === "success") {
+          const imageUrl = result.info.secure_url;
+          setUser({ ...user, profilePicture: imageUrl });
+
+          try {
+            await axios.put(
+              `${import.meta.env.VITE_API_URL}/users/${userId}`,
+              { image: imageUrl },
+              {
+                headers: {
+                  Authorization: `Bearer ${token}`,
+                },
+              }
+            );
+          } catch (err) {
+            console.error("Failed to update profile picture:", err);
+          }
+        }
+      }
+    );
+
+    widget.open();
+  };
+
   if (!user) return <div>Loading...</div>;
 
   return (
     <div className="profile-container">
+      <Sidebar/>
       <div className="profile-card">
         <div className="profile-header">
-          {/* <img src={imagePlaceholder} alt="Profile" className="profile-pic" /> */}
+          <div className="image-container">
+            <img
+              src={user.image }
+              alt="Profile"
+              className="profile-pic"
+            />
+            <button className="upload-image-btn" onClick={handleImageUpload}>
+              <FaCamera />
+            </button>
+          </div>
           <h2>{user.name}</h2>
           <p className="username">
             @{user.email || user.name.toLowerCase().replace(/\s/g, "")}
@@ -60,18 +101,6 @@ const ProfilePage = () => {
             <strong>Gender:</strong> {user.gender}
           </p>
         </div>
-
-        {/* <div className="profile-info">
-          <p>
-            <strong>Phone Number:</strong> +91 9876543210
-          </p>
-          <p>
-            <strong>Email:</strong> snigdha@example.com
-          </p>
-          <p>
-            <strong>Gender:</strong> Female
-          </p>
-        </div> */}
 
         <div className="profile-buttons">
           <button

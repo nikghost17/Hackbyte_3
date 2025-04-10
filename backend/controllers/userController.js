@@ -26,8 +26,29 @@ const getUserById = async (req, res) => {
   }
 }
 
+const updateUserById = async (req, res) => {
+  const { id } = req.params;
+  const updatedData = req.body;
+
+  try {
+    const updatedUser = await userModel.findByIdAndUpdate(id, updatedData, {
+      new: true,
+    });
+
+    if (!updatedUser) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    res.status(200).json(updatedUser);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+
 module.exports = {
   getAllUsers,
   getUserById,
+  updateUserById,
   // Add other controller functions here as needed
 };

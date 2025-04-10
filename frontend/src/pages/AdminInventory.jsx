@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./AddMedicineForm.css";
-import Sidebar from "../components/Sidebar";
+import Sidebar from "../components/sidebar";
 
 const AdminInventory = () => {
   const [formData, setFormData] = useState({

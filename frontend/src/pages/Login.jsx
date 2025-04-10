@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import Sidebar from "../components/sidebar";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -22,7 +23,17 @@ const Login = () => {
       const { token } = response.data;
       localStorage.setItem("token", token);
       localStorage.setItem("userId", response.data.userId); // Store userId if needed
-      navigate("/home"); // Redirect to home page after successful login
+      const adminEmail = import.meta.env.VITE_ADMIN_EMAIL;
+      const adminPassword = import.meta.env.VITE_ADMIN_PASSWORD;
+
+      if (email === adminEmail && password === adminPassword) {
+        localStorage.setItem("userType", "admin");
+        navigate("/admin"); // Redirect to admin inventory page
+      } else {
+        localStorage.setItem("userType", "user");
+        navigate("/");
+      }
+      // Redirect to home page after successful login
       alert("Login Successful!");
     } catch (err) {
       if (err.response && err.response.data.message) {
@@ -35,6 +46,7 @@ const Login = () => {
 
   return (
     <div className="auth-wrapper">
+      <Sidebar/>
       <div className="auth-container">
         <div className="auth-box">
           <h2 className="auth-title">Login</h2>

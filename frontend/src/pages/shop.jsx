@@ -18,6 +18,26 @@ const Shop = () => {
       });
   }, []);
 
+  const handleAddToCart = async (med) => {
+    const userId = localStorage.getItem('userId'); // get userId however you store it
+  
+    const res = await fetch("http://localhost:5000/api/cart/add", {
+      method: "POST",
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        userId,
+        medId: med._id,
+        med_name: med.med_name,
+        quantity: 1,
+        price: med.med_price
+      })
+    });
+  
+    const data = await res.json();
+    console.log("Added to cart:", data);
+  };
+
+
   const handleSearch = () => {
     const result = medicines.filter((med) =>
       med.med_name.toLowerCase().includes(searchTerm.toLowerCase())
@@ -64,7 +84,9 @@ const Shop = () => {
               <div className="medicine-footer">
                 <span className="price">₹{med.med_price}</span>
                 {med.med_quantity > 0 ? (
-                  <button className="add-btn">Add to Cart</button>
+                  <button className="add-btn" onClick={() => handleAddToCart(med)}>
+                  Add to Cart
+                </button>
                 ) : (
                   <button
                     className="add-btn"

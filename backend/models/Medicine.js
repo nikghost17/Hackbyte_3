@@ -10,3 +10,4 @@ const medicineSchema = new mongoose.Schema({
 });
 
 module.exports = mongoose.model("Medicine", medicineSchema, "Medicines");
+// module.exports = mongoose.models.Medicines || mongoose.model('Medicines', medicineSchema);

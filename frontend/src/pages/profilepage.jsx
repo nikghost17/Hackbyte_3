@@ -92,10 +92,13 @@ const ProfilePage = () => {
 
         <div className="profile-info">
           <p>
-            <strong>Phone Number:</strong> {user.phone}
+            <strong>Name:</strong> {user.firstName + " " + user.lastName}
           </p>
           <p>
             <strong>Email:</strong> {user.email}
+          </p>
+          <p>
+            <strong>Phone Number:</strong> {user.phone}
           </p>
           <p>
             <strong>Gender:</strong> {user.gender}

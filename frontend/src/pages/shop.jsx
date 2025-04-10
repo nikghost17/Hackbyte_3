@@ -9,6 +9,7 @@ const Shop = () => {
   const [filtered, setFiltered] = useState([]);
   const navigate = useNavigate();
 
+  //whenever our code comes on the screen for the first time this is done
   useEffect(() => {
     fetch("http://localhost:5000/api/medicines")
       .then((res) => res.json())
@@ -39,15 +40,18 @@ const Shop = () => {
 
 
   const handleSearch = () => {
-    const result = medicines.filter((med) =>
-      med.med_name.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-    if (result.length === 0) {
-      navigate("/requestmedicine");
-    } else {
-      setFiltered(result);
-    }
+    const params = new URLSearchParams({ name: searchTerm });
+    fetch(`http://localhost:5000/api/medicines/search?${params.toString()}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setMedicines(data);
+        setFiltered(data);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
   };
+  
 
   return (
     <div className="shop-layout">

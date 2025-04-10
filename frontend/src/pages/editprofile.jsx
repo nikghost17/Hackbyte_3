@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Sidebar from "../components/Sidebar";
+import Sidebar from "../components/sidebar";
 import "./EditProfile.css";
 
 const EditProfile = () => {
@@ -27,7 +27,7 @@ const EditProfile = () => {
   return (
     <div className="edit-profile-page">
       <Sidebar />
-
+      <h1>My Profile</h1>
       <div className="edit-profile-container">
         <div className="edit-profile-card">
           <h2>Edit Profile</h2>

@@ -14,6 +14,7 @@ const connectDB = require("./config/db.js");
 const authRoutes = require("./routes/authRoutes.js");
 const userRoutes = require("./routes/userRoutes.js");
 const medicineRoutes = require("./routes/medicineRoutes.js");
+const cart = require("./routes/cart.js")
 const app = express();
 
 // Middleware
@@ -28,6 +29,6 @@ app.use("/api/medicines", medicineRoutes);
 app.use("/auth", authRoutes);
 app.use("/api/stripe", paymentRoutes);
 app.use("/users", userRoutes);
-
+app.use("/api/cart",cart)
 // start server
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

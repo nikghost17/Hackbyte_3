@@ -17,6 +17,7 @@ const EditProfile = () => {
     gender: "",
   });
 
+  // Specifies [userId, token] as dependencies for the useEffect hook, meaning the effect will re-run if either userId or token changes.
   useEffect(() => {
     const fetchUserData = async () => {
       try {

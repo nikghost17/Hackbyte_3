@@ -9,7 +9,7 @@ const Shop = () => {
   const [filtered, setFiltered] = useState([]);
   const navigate = useNavigate();
 
-  //whenever our code comes on the screen for the first time this is done
+  //whenever our code comes on the screen for the first time this is done and never else as the [] at the end are empty
   useEffect(() => {
     fetch("http://localhost:5000/api/medicines")
       .then((res) => res.json())
